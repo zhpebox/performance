@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Console界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="../css/datepicker.css"/>
+    <link rel="stylesheet" href="../css/uniform.css"/>
+    <link rel="stylesheet" href="../css/select2.css"/>
+    <link rel="stylesheet" href="../css/unicorn.main.css"/>
+    <link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<!--[if lte IE 9]>
+	<link rel="stylesheet" href="<%=path%>/css/Bsie.css" class="skin-color"/>
+<![endif]--> 
+</head>
+<body>
+
+<!--Start of Header-->
+<div class="container" id="header">
+
+    <!--<a class="navbar-brand" href="#">Brand</a>-->
+    <h1><a href="index.html">后台管理</a></h1>
+</div>
+
+
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav btn-group">
+        <li class="btn btn-inverse"><a title="" href="index2.html"><i class="icon icon-shopping-cart"></i> <span
+                class="text">前台</span></a></li>
+        <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span
+                class="text">用户信息</span></a></li>
+        <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span
+                class="text">设置</span></a></li>
+        <li class="btn btn-inverse"><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span
+                class="text">登陆</span></a></li>
+    </ul>
+</div>
+<!--End of Header-->
+
+
+<!--Here is the 链接的菜单-->
+<div id="sidebar">
+    <a href="#" class="visible-phone"><i class="icon icon-home"></i>后台首页</a>
+    <ul>
+        <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>后台首页</span></a></li>
+        <li><a href="details.html"><i class="icon icon-th-list"></i> <span>商品详情</span></a></li>
+        <li><a href="#"><i class="icon icon-tint"></i> <span>推广员管理</span></a></li>
+        <li><a href="#"><i class="icon icon-pencil"></i> <span>销量统计</span></a></li>
+        <li><a href="finance.html"><i class="icon icon-th"></i> <span>财务统计</span></a></li>
+        <li><a href="#"><i class="icon icon-th-list"></i> <span>账户管理？</span></a></li>
+        <li><a href="#"><i class="icon icon-file"></i> <span>退单管理？</span> <span class="label">4</span></a></li>
+        <li><a href="#"><i class="icon icon-signal"></i> <span>订单管理</span></a></li>
+    </ul>
+</div>
+<!--End of the Sidebar-->
+
+
+<!--Start of Content-->
+<div id="content">
+    <div id="content-header">
+        <h1>后台首页</h1>
+
+    </div>
+    <div id="breadcrumb">
+        <a href="index.html" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+        <!--<a href="#" class="current"></a>-->
+    </div>
+    <!--系统公告-->
+    <div class="container-fluid">
+        <!--start of true content-->
+        <div class="row-fluid">
+            <div class="span12 center">
+                <div id="System-announce">
+                <blockquote>
+                <p><strong>系统公告</strong></p>
+                </blockquote>
+                </div>
+
+                <div class="row-fluid">
+                <div class="span12">
+                <div class="alert alert-info">
+                欢迎使用<strong>张益达</strong>设计的后台模板
+                <a href="#" data-dismiss="alert" class="close">×</a>
+                </div>
+                </div>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-large tip-bottom disabled">供应商</a>
+                    <a class="btn btn-large tip-bottom" title="新建"><i class="icon-plus-sign"></i></a>
+                    <a class="btn btn-large tip-bottom" title="修改"><i class="icon-edit"></i></a>
+                    <a class="btn btn-large tip-bottom" title="删除"><i class="icon-trash"></i></a>
+                </div>
+
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"><i class="icon-pencil"></i></span>
+                        <h5>供应商注册</h5>
+                    </div>
+                    <div class="widget-content nopadding offset3">
+                        <form class="form-horizontal" method="post" action="#" id="signupForm">
+                            <div class="control-group">
+                                <label class="control-label">用户名</label>
+                                <div class="controls">
+                                    <input type="text" name="username" id="username"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">密码</label>
+                                <div class="controls">
+                                    <input type="password" name="password" id="password"/>
+                                </div>
+                            </div>
+
+
+                            <div class="control-group">
+                                <label class="control-label">确认密码</label>
+
+                                <div class="controls">
+                                    <input type="password" name="confirm_password" id="confirm_password"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">真实姓名</label>
+                                <div class="controls">
+                                    <input type="text" name="truename" id="truename"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">公司名称</label>
+                                <div class="controls">
+                                    <input type="text" name="companyname" id="companyname"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">营业执照编号</label>
+                                <div class="controls">
+                                    <input type="text" name="companynumber" id="companynumber"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">营业执照照片</label>
+                                <div class="controls">
+                                    <input type="file" name="companyPic" id="companyPic"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">法人/个人 身份证号</label>
+                                <div class="controls">
+                                    <input type="text" name="userid" id="userid"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">法人/个人 身份证照片</label>
+                                <div class="controls">
+                                    <input type="file" name="userPic" id="userPic"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">手机号</label>
+                                <div class="controls">
+                                    <input type="text" name="phonenumber" id="phonenumber"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">所在城市</label>
+                                <div class="controls">
+                                    <select name="city" id="city">
+                                        <option/>
+                                        秦皇岛
+                                        <option/>
+                                        北京
+                                        <option/>
+                                        唐山
+                                        <option/>
+                                        石家庄
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">邮箱</label>
+                                <div class="controls">
+                                    <input type="text" name="email" id="email"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">QQ号</label>
+                                <div class="controls">
+                                    <input type="text" name="check_QQ" id="check_QQ"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">座机号</label>
+                                <div class="controls">
+                                    <input type="text" name="telephone" id="telephone"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">备注</label>
+                                <div class="controls">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <input type="submit" value="提交" class="btn btn-primary"/>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end of true content-->
+    </div>
+</div>
+
+<script src="../../../js/jquery.min.js"></script>
+<script src="../../../js/jquery.ui.custom.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap-datepicker.js"></script>
+<script src="../../../js/jquery.uniform.js"></script>
+<script src="../../../js/select2.min.js"></script>
+<script src="../../../js/jquery.validate.js"></script>
+<script src="../../../js/Register.form.js"></script>
+<script src="../../../js/unicorn.js"></script>
+<script src="../../../js/unicorn.form_common.js"></script>
+
+
+</body>
+</html>

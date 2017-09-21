@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+
+<title>我的帖子</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+</head>
+<body>
+    <div class="container" style="margin-top: 30px">
+        <div class="row">
+            <div class="col-xs-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a
+                        href="#">资料修改</a></li>
+                    <li role="presentation" class="active"><a
+                        href="#">我的帖子</a></li>
+                    <li role="presentation"><a href="#">申请记录</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <ul class="list-group">
+                    <a class="list-group-item active"> 我的帖子 </a>
+                    <div class="list-group-item">
+                        <a href="#" style="color:grey">
+                            <h4 class="list-group-item-heading" style="color:black">
+                                主论坛标题</h4>帖子标题
+                        </a> <a href="#" style="float: right">编辑</a> 
+                        <a href="#" style="float: right">申请精华贴&nbsp;</a>
+                        <p style="float: right;margin-right: 50px">
+                            浏览量:&nbsp;评论量:&nbsp;发表日期:</p>
+                    </div>
+                </ul>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
+<div class="col-md-9">
+<div class="col-md-9">
+这俩个就是我上面所说的栅格系统
+.col-xs-超小屏幕 手机 (<768px),.col-sm-小屏幕 平板 (≥768px),.col-md-中等屏幕 桌面显示器 (≥992px)(栅格参数).
+不管在哪种屏幕上，栅格系统都会自动的分12列 col-xs-*和col-sm-* 和col-md-*后面跟的参数表示在当前的屏幕中 div占的宽度。例如 <div class="col-xs-6 col-md-3"> 这个div在屏幕中占的位置是：1在超小屏幕中占6列 也就是屏幕的一半（6/12） 2.在中单屏幕中占3列也就是1/4（3/12）。 如果我们要在小屏幕上并排显示3个div(12/3=4)，在大屏幕上显示6个 则col-xs-4 col-md-2
+这样我们就可以控制我们自己想要的什么排版了。
+还有一种情况是 <div class="col-sm-10 col-md-8"> 后面跟的div中col-sm的参数如果为3 也就是
+<div class="col-sm-10 col-md-8"></div>
+<div class="col-sm-3 col-md-4"></div>
+如果是这样 这两个div在小屏幕中会排2排 因为10+3>12 ,在中等屏幕中可以排同一排 8+4=12
+根据上面的介绍我们可以得出无论是在xs,还是md中左侧所占的百分比都是3/12=1/4=1-9/12
