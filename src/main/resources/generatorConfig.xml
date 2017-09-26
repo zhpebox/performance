@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE generatorConfiguration
+         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="D:/mavenRepo/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar" />
+	<context id="MysqlTable" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /> <!-- 是否取消注释 -->
+			<property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/generatordb" userId="root"
+			password="123456" />
+
+		<!-- 类型转换 -->  
+<!-- 		<javaTypeResolver > -->
+		<!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->  
+<!-- 		<property name="forceBigDecimals" value="false" /> -->
+<!-- 		</javaTypeResolver> -->
+				
+
+		<javaModelGenerator targetPackage="com.performance.model"
+			targetProject="D:/TestJavaWorkPlace/GeneratorDataWeb/src/main/java">
+			<property name="enableSubPackages" value="true" /> <!-- 是否在当前路径下新加一层-->
+			<property name="trimStrings" value="true" /> <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="sqlmap.mapper"
+			targetProject="D:/TestJavaWorkPlace/GeneratorDataWeb/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator targetPackage="com.performance.dao"
+			targetProject="D:/TestJavaWorkPlace/GeneratorDataWeb/src/main/java"
+			type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+<!-- 		<table tableName="tbl_user" domainObjectName="TblUser"> -->
+<!-- 			<columnOverride column="uid" property="uid" javaType="Integer"/> -->
+<!-- 			<columnOverride column="uname" property="uname" /> -->
+<!-- 			<columnOverride column="upass" property="upass" /> -->
+<!-- 		</table> -->
+
+		<table tableName="T_module" domainObjectName="TblModule"></table>
+		<table tableName="T_rule" domainObjectName="TblRule"></table>
+		<table tableName="T_module_rule" domainObjectName="TblModuleRule"></table>
+
+	</context>
+</generatorConfiguration>

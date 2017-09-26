@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.performance.dao.TblRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.performance.model.TblRule" >
+    <id column="rule_id" property="ruleId" jdbcType="INTEGER" />
+    <result column="rule_source" property="ruleSource" jdbcType="INTEGER" />
+    <result column="rule_text" property="ruleText" jdbcType="VARCHAR" />
+    <result column="rule_method" property="ruleMethod" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rule_id, rule_source, rule_text, rule_method
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.performance.model.TblRuleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_rule
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_rule
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.performance.model.TblRuleExample" >
+    delete from t_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.performance.model.TblRule" >
+    insert into t_rule (rule_id, rule_source, rule_text, 
+      rule_method)
+    values (#{ruleId,jdbcType=INTEGER}, #{ruleSource,jdbcType=INTEGER}, #{ruleText,jdbcType=VARCHAR}, 
+      #{ruleMethod,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.performance.model.TblRule" >
+    insert into t_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ruleId != null" >
+        rule_id,
+      </if>
+      <if test="ruleSource != null" >
+        rule_source,
+      </if>
+      <if test="ruleText != null" >
+        rule_text,
+      </if>
+      <if test="ruleMethod != null" >
+        rule_method,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="ruleSource != null" >
+        #{ruleSource,jdbcType=INTEGER},
+      </if>
+      <if test="ruleText != null" >
+        #{ruleText,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleMethod != null" >
+        #{ruleMethod,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.performance.model.TblRuleExample" resultType="java.lang.Integer" >
+    select count(*) from t_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_rule
+    <set >
+      <if test="record.ruleId != null" >
+        rule_id = #{record.ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ruleSource != null" >
+        rule_source = #{record.ruleSource,jdbcType=INTEGER},
+      </if>
+      <if test="record.ruleText != null" >
+        rule_text = #{record.ruleText,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ruleMethod != null" >
+        rule_method = #{record.ruleMethod,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_rule
+    set rule_id = #{record.ruleId,jdbcType=INTEGER},
+      rule_source = #{record.ruleSource,jdbcType=INTEGER},
+      rule_text = #{record.ruleText,jdbcType=VARCHAR},
+      rule_method = #{record.ruleMethod,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.performance.model.TblRule" >
+    update t_rule
+    <set >
+      <if test="ruleSource != null" >
+        rule_source = #{ruleSource,jdbcType=INTEGER},
+      </if>
+      <if test="ruleText != null" >
+        rule_text = #{ruleText,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleMethod != null" >
+        rule_method = #{ruleMethod,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.performance.model.TblRule" >
+    update t_rule
+    set rule_source = #{ruleSource,jdbcType=INTEGER},
+      rule_text = #{ruleText,jdbcType=VARCHAR},
+      rule_method = #{ruleMethod,jdbcType=VARCHAR}
+    where rule_id = #{ruleId,jdbcType=INTEGER}
+  </update>
+</mapper>
