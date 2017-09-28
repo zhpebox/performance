@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TblRuleMapper {
-    int countByExample(TblRuleExample example);
+    long countByExample(TblRuleExample example);
 
     int deleteByExample(TblRuleExample example);
 

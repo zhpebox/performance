@@ -164,6 +164,76 @@ public class TblRuleExample {
             return (Criteria) this;
         }
 
+        public Criteria andRuleNameIsNull() {
+            addCriterion("rule_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameIsNotNull() {
+            addCriterion("rule_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameEqualTo(String value) {
+            addCriterion("rule_name =", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameNotEqualTo(String value) {
+            addCriterion("rule_name <>", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameGreaterThan(String value) {
+            addCriterion("rule_name >", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameGreaterThanOrEqualTo(String value) {
+            addCriterion("rule_name >=", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameLessThan(String value) {
+            addCriterion("rule_name <", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameLessThanOrEqualTo(String value) {
+            addCriterion("rule_name <=", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameLike(String value) {
+            addCriterion("rule_name like", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameNotLike(String value) {
+            addCriterion("rule_name not like", value, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameIn(List<String> values) {
+            addCriterion("rule_name in", values, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameNotIn(List<String> values) {
+            addCriterion("rule_name not in", values, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameBetween(String value1, String value2) {
+            addCriterion("rule_name between", value1, value2, "ruleName");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleNameNotBetween(String value1, String value2) {
+            addCriterion("rule_name not between", value1, value2, "ruleName");
+            return (Criteria) this;
+        }
+
         public Criteria andRuleSourceIsNull() {
             addCriterion("rule_source is null");
             return (Criteria) this;
@@ -224,143 +294,213 @@ public class TblRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextIsNull() {
-            addCriterion("rule_text is null");
+        public Criteria andParamFileIsNull() {
+            addCriterion("param_file is null");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextIsNotNull() {
-            addCriterion("rule_text is not null");
+        public Criteria andParamFileIsNotNull() {
+            addCriterion("param_file is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextEqualTo(String value) {
-            addCriterion("rule_text =", value, "ruleText");
+        public Criteria andParamFileEqualTo(String value) {
+            addCriterion("param_file =", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextNotEqualTo(String value) {
-            addCriterion("rule_text <>", value, "ruleText");
+        public Criteria andParamFileNotEqualTo(String value) {
+            addCriterion("param_file <>", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextGreaterThan(String value) {
-            addCriterion("rule_text >", value, "ruleText");
+        public Criteria andParamFileGreaterThan(String value) {
+            addCriterion("param_file >", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextGreaterThanOrEqualTo(String value) {
-            addCriterion("rule_text >=", value, "ruleText");
+        public Criteria andParamFileGreaterThanOrEqualTo(String value) {
+            addCriterion("param_file >=", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextLessThan(String value) {
-            addCriterion("rule_text <", value, "ruleText");
+        public Criteria andParamFileLessThan(String value) {
+            addCriterion("param_file <", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextLessThanOrEqualTo(String value) {
-            addCriterion("rule_text <=", value, "ruleText");
+        public Criteria andParamFileLessThanOrEqualTo(String value) {
+            addCriterion("param_file <=", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextLike(String value) {
-            addCriterion("rule_text like", value, "ruleText");
+        public Criteria andParamFileLike(String value) {
+            addCriterion("param_file like", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextNotLike(String value) {
-            addCriterion("rule_text not like", value, "ruleText");
+        public Criteria andParamFileNotLike(String value) {
+            addCriterion("param_file not like", value, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextIn(List<String> values) {
-            addCriterion("rule_text in", values, "ruleText");
+        public Criteria andParamFileIn(List<String> values) {
+            addCriterion("param_file in", values, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextNotIn(List<String> values) {
-            addCriterion("rule_text not in", values, "ruleText");
+        public Criteria andParamFileNotIn(List<String> values) {
+            addCriterion("param_file not in", values, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextBetween(String value1, String value2) {
-            addCriterion("rule_text between", value1, value2, "ruleText");
+        public Criteria andParamFileBetween(String value1, String value2) {
+            addCriterion("param_file between", value1, value2, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleTextNotBetween(String value1, String value2) {
-            addCriterion("rule_text not between", value1, value2, "ruleText");
+        public Criteria andParamFileNotBetween(String value1, String value2) {
+            addCriterion("param_file not between", value1, value2, "paramFile");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodIsNull() {
-            addCriterion("rule_method is null");
+        public Criteria andClassNameIsNull() {
+            addCriterion("class_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodIsNotNull() {
-            addCriterion("rule_method is not null");
+        public Criteria andClassNameIsNotNull() {
+            addCriterion("class_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodEqualTo(String value) {
-            addCriterion("rule_method =", value, "ruleMethod");
+        public Criteria andClassNameEqualTo(String value) {
+            addCriterion("class_name =", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodNotEqualTo(String value) {
-            addCriterion("rule_method <>", value, "ruleMethod");
+        public Criteria andClassNameNotEqualTo(String value) {
+            addCriterion("class_name <>", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodGreaterThan(String value) {
-            addCriterion("rule_method >", value, "ruleMethod");
+        public Criteria andClassNameGreaterThan(String value) {
+            addCriterion("class_name >", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodGreaterThanOrEqualTo(String value) {
-            addCriterion("rule_method >=", value, "ruleMethod");
+        public Criteria andClassNameGreaterThanOrEqualTo(String value) {
+            addCriterion("class_name >=", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodLessThan(String value) {
-            addCriterion("rule_method <", value, "ruleMethod");
+        public Criteria andClassNameLessThan(String value) {
+            addCriterion("class_name <", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodLessThanOrEqualTo(String value) {
-            addCriterion("rule_method <=", value, "ruleMethod");
+        public Criteria andClassNameLessThanOrEqualTo(String value) {
+            addCriterion("class_name <=", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodLike(String value) {
-            addCriterion("rule_method like", value, "ruleMethod");
+        public Criteria andClassNameLike(String value) {
+            addCriterion("class_name like", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodNotLike(String value) {
-            addCriterion("rule_method not like", value, "ruleMethod");
+        public Criteria andClassNameNotLike(String value) {
+            addCriterion("class_name not like", value, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodIn(List<String> values) {
-            addCriterion("rule_method in", values, "ruleMethod");
+        public Criteria andClassNameIn(List<String> values) {
+            addCriterion("class_name in", values, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodNotIn(List<String> values) {
-            addCriterion("rule_method not in", values, "ruleMethod");
+        public Criteria andClassNameNotIn(List<String> values) {
+            addCriterion("class_name not in", values, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodBetween(String value1, String value2) {
-            addCriterion("rule_method between", value1, value2, "ruleMethod");
+        public Criteria andClassNameBetween(String value1, String value2) {
+            addCriterion("class_name between", value1, value2, "className");
             return (Criteria) this;
         }
 
-        public Criteria andRuleMethodNotBetween(String value1, String value2) {
-            addCriterion("rule_method not between", value1, value2, "ruleMethod");
+        public Criteria andClassNameNotBetween(String value1, String value2) {
+            addCriterion("class_name not between", value1, value2, "className");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameIsNull() {
+            addCriterion("method_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameIsNotNull() {
+            addCriterion("method_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameEqualTo(String value) {
+            addCriterion("method_name =", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameNotEqualTo(String value) {
+            addCriterion("method_name <>", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameGreaterThan(String value) {
+            addCriterion("method_name >", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameGreaterThanOrEqualTo(String value) {
+            addCriterion("method_name >=", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameLessThan(String value) {
+            addCriterion("method_name <", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameLessThanOrEqualTo(String value) {
+            addCriterion("method_name <=", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameLike(String value) {
+            addCriterion("method_name like", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameNotLike(String value) {
+            addCriterion("method_name not like", value, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameIn(List<String> values) {
+            addCriterion("method_name in", values, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameNotIn(List<String> values) {
+            addCriterion("method_name not in", values, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameBetween(String value1, String value2) {
+            addCriterion("method_name between", value1, value2, "methodName");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNameNotBetween(String value1, String value2) {
+            addCriterion("method_name not between", value1, value2, "methodName");
             return (Criteria) this;
         }
     }

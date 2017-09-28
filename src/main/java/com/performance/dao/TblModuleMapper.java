@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TblModuleMapper {
-    int countByExample(TblModuleExample example);
+    long countByExample(TblModuleExample example);
 
     int deleteByExample(TblModuleExample example);
 

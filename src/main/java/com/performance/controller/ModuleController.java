@@ -14,21 +14,18 @@ import com.performance.model.TblModule;
 import com.performance.service.ModuleService;
 
 @Controller
-@RequestMapping("/moduleData")
-public class ProcessController {
-	private static final Logger logger = LoggerFactory.getLogger(ProcessController.class);
+@RequestMapping("/module")
+public class ModuleController {
+	private static final Logger logger = LoggerFactory.getLogger(ModuleController.class);
 	
 	@Autowired
 	private ModuleService moduleService;
 	
-	@RequestMapping(value="/submitModuleData",method=RequestMethod.POST,
-			produces="application/json;charset=UTF-8")
-	public String processDataModule(@RequestParam(value="moduleData",defaultValue="") String moduleData){
-		//	,TblUser mo){
-//		JSONObject a = (JSONObject) JSON.parse(s);
-		TblModule b = JSON.parseObject(moduleData, new TypeReference<TblModule>(){});
-		logger.info("Hello submit is here="+moduleData); 
-		moduleService.saveMudule(moduleData);
+	@RequestMapping(value="/add",method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	public String addDataModule(@RequestParam(value="moduleData",defaultValue="") String moduleData){
+		logger.info(" /module/add here submit is = "+moduleData); 
+		int result = moduleService.saveMudule(moduleData);
+		logger.info("precess result "+result);
 		return "index";
 	}
 	

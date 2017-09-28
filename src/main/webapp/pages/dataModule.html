@@ -2,13 +2,24 @@
 <html>
 <head>
 <title>Generator Data Tools</title>
-<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
-<script type="text/javascript" src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+<link
+	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+<script type="text/javascript"
+	src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <!-- <script type="text/javascript" src="../js/app.js"></script> -->
 </head>
 <body>
@@ -18,79 +29,66 @@
 				<div class="row clearfix">
 					<div class="col-md-2 column"></div>
 					<div class="col-md-6 column">
-						<form class="form-horizontal" action="/GeneratorDataWeb/moduleData/submitModuleData.do" method="post" role="form">
+						<form class="form-horizontal"
+							action="/GeneratorDataWeb/moduleData/submitModuleData.do"
+							method="post" role="form">
 							<div class="form-group">
-								<label for="moduleName">Data Module Name</label> 
-								<input type="text" class="form-control" v-model="module.moduleName" id="moduleName" />
+								<label for="moduleName">æ¨¡æ¿åç§°</label> <input type="text"
+									class="form-control" v-model="module.moduleName"
+									id="moduleName" />
 							</div>
 							<div class="form-group">
-								<label for="moduleText">Data Module</label> 
-								<textarea class="form-control" rows="10" v-model="module.moduleText" id="moduleText"></textarea>
+								<label for="moduleText">æ¨¡æ¿</label>
+								<textarea class="form-control" rows="10"
+									v-model="module.moduleText" id="moduleText"></textarea>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputFile">File input</label> 
-								<input type="file" id="exampleInputFile" />
-								<p class="help-block">Example block-level help text here.</p>
-							</div>
-							<div class="checkbox">
-								<label><input type="checkbox" />Check me out</label>
+								<label for="exampleInputFile">æ–‡ä»¶è¾“å…¥</label> <input type="file"
+									id="exampleInputFile" />
 							</div>
 							<div class="col-md-6 column"></div>
-							<div class="col-md-6 column" style="text-align:right">
-								<button type="submit"  class="btn btn-default btn-success">Submit</button>
-								<button type="button" v-on:click="submitModuleDataPut"  class="btn btn-default btn-info">add Rule</button>
+							<div class="col-md-6 column" style="text-align: right">
+								<button type="button" v-on:click="submitModuleData"
+									class="btn btn-default btn-success">ä¿å­˜</button>
+								<button type="button" v-on:click="submitModuleData"
+									class="btn btn-default btn-info">æ·»åŠ è§„åˆ™</button>
 							</div>
+							<div class="col-md-4 column">{{backMessage}}</div>
 						</form>
 					</div>
-					<div class="col-md-4 column"></div>
+
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 <script type="text/javascript">
+
 	new Vue({
 	  el: '#DataMuduleDiv',
 	  data: {
 		  module:{moduleName:'n',moduleText:'x'},
-		  backMessage:''
+		  backMessage:this.$route.query.uid
 	  },
 	  methods:{
-		  sendModuleData:function(){
-			  console.log(JSON.stringify(this.module));
-		  },
 		  submitModuleData:function(){
 			  this.$http({
 				  method:'POST',
-				  url:'/GeneratorDataWeb/moduleData/submitModuleData.do',
+				  url:'/GeneratorDataWeb/module/add.do',
 				  body:{'moduleData':JSON.stringify(this.module)},
-				  emulateJSON:true, //ÔÊĞíbody´ø½ÓËÍ´«Êä
+				  emulateJSON:true, //å…è®¸bodyå¸¦æ¥é€ä¼ è¾“
 					headers: {
 						dataType:"json", 
 						contentType:"application/json"
                 }
 			  }).then(response => {
-				  this.backMessage = response.body
+				  alert(response.bodyText);
 			  }, response => {
-				  console.log("·´À¡³öÏÖÎÊÌâ£¡");
-			  });
-		  },
-		  submitModuleDataPut:function(){
-			  this.$http({
-				  method:'PUT',
-				  url:'/GeneratorDataWeb/moduleData/submitModuleData.do',
-				  body:{'moduleData':JSON.stringify(this.module)},
-				  emulateJSON:true, //ÔÊĞíbody´ø½ÓËÍ´«Êä
-					headers: {
-						dataType:"json", 
-						contentType:"application/json"
-                }
-			  }).then(response => {
-				  this.backMessage = response.body
-			  }, response => {
-				  console.log("·´À¡³öÏÖÎÊÌâ£¡");
+				  console.log("åé¦ˆå‡ºç°é—®é¢˜ï¼");
 			  });
 		  }
-	  }
-	})
+	}
+	  
+	}).$mount('#DataMuduleDiv')
 </script>
 </html>

@@ -1,0 +1,35 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<div id="app">
+  <p>
+  	{{a}},{{$route.query.mid}}
+    <router-link to="/user">/user/foo</router-link>
+    <router-link to="/user/1">/user/foo/profile</router-link>
+    <router-link to="/user/w">/user/foo/posts</router-link>
+  </p>
+  x<router-view></router-view>b
+</div>
+
+<script>
+// import VueRouter from 'vue-router'
+//1. 定义（路由）组件。
+//加载组件
+import Page01 from './dataRule.html'
+	
+		const UserProfile = { template: '<div>Profile</div>' }
+		const UserPosts = { template: '<div>w</div>' }
+
+		const router = new VueRouter({
+		  routes: [
+		    { path: '/user', component:UserProfile ,
+		    	children:[
+				{ path: '1', component: Page01 },
+		        { path: 'w', component: UserPosts }
+		      ]
+		    }
+		  ]
+		})
+
+		const app = new Vue({data:{a:'AA'},router }).$mount('#app')
+</script>

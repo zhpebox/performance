@@ -24,7 +24,7 @@
 	<!-- 需要放在所有appender的后面 -->
 <!-- 		<appender-ref ref="FileLogger"/> -->
 	<root>
-		<level value="INFO" />
+		<level value="DEBUG" />
 		<appender-ref ref="console" />
 	</root>
 	
