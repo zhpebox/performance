@@ -1,5 +1,8 @@
 package com.performance.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,15 @@ public class RuleServiceImpl implements RuleService {
 		int result = tblRuleMapper.insert(tblRule);
 		logger.debug("save rule = "+ruleStr+"  result is "+result);
 		return result;
+	}
+
+	@Override
+	public String getRule(String param) {
+		List<TblRule> resultList = new ArrayList<TblRule>();
+		if("".equals(param)){
+			resultList = tblRuleMapper.selectByExample(null);
+		}
+		return JSON.toJSONString(resultList);
 	}
 
 }

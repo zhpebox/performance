@@ -15,7 +15,6 @@
 // import VueRouter from 'vue-router'
 //1. 定义（路由）组件。
 //加载组件
-import Page01 from './dataRule.html'
 	
 		const UserProfile = { template: '<div>Profile</div>' }
 		const UserPosts = { template: '<div>w</div>' }
@@ -24,7 +23,6 @@ import Page01 from './dataRule.html'
 		  routes: [
 		    { path: '/user', component:UserProfile ,
 		    	children:[
-				{ path: '1', component: Page01 },
 		        { path: 'w', component: UserPosts }
 		      ]
 		    }

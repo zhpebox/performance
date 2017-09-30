@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
@@ -19,11 +20,22 @@ public class ModuleServiceImpl implements ModuleService {
 	TblModuleMapper tblModuleMapper;
 	
 	@Override
+	@Transactional
 	public int saveMudule(String moduleStr) {
 		TblModule tblModule = JSON.parseObject(moduleStr, new TypeReference<TblModule>(){});
-		
 		int result = tblModuleMapper.insert(tblModule);
-		return result;
+		if(result!=1){
+			logger.error("module 插入数据库失败！"+tblModule.toString());
+			return 0;
+		}
+		return tblModule.getModuleId();
+	}
+
+	@Override
+	public String getModule(String moduleId) {
+		TblModule result = tblModuleMapper.selectByPrimaryKey(Integer.parseInt(moduleId));
+		
+		return JSON.toJSONString(result);
 	}
 
 }

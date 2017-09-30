@@ -40,13 +40,18 @@
 							</div>
 							<div class="form-group">
 <!-- 								<button v-on:click="add('a-component', 'test')" class="btn btn-primary">Add A</button> -->
-								<button @click="add('b-component', 'test')" class="btn btn-primary">Add Params</button>
+								<button @click="add('b-component', 'param')" class="btn btn-primary">Add Params</button>
 							</div>
-							<div :is="item.component" :texta="item.texta" v-for="item in items"></div>
+							<div >
+<!-- 							<select> -->
+<!-- 							  <option v-for="it in rule" v-bind:value="it.ruleId">{{it.ruleName}}</option> -->
+<!-- 						      <option>1</option> -->
+<!-- 						    </select> -->
+						</div>
+							<div :is="item.component" :paramindex="item.pIndex" :rules="ruleList" v-for="item in paramItems"></div>
 							<div class="col-md-6 column"></div>
 							<div class="col-md-6 column" style="text-align: right">
-								<button type="button" v-on:click=""
-									class="btn btn-default btn-success">保存</button>
+								<button type="button" v-on:click="" class="btn btn-default btn-success">保存</button>
 							</div>
 						</form>
 					</div>
@@ -57,25 +62,16 @@
 	</div>
 </body>
 <script type="text/javascript">
-// 	var AComponent = Vue.extend({
-// 	  props: ['text'],
-// 	  template: '<li>A Component: {{ text }}</li>'
-// 	})
-	
 	var BComponent = Vue.extend({
-	  props: ['texta'],
+	  props: ['paramindex','rules'],
 	  template: `<div class="form-group">
 					<div class="col-md-3 column" >
-	 						<label>{{ texta }}</label>
+	 						<label>{{ paramindex }}</label>
 					</div>
 					<div class="col-md-9 column" >
 						<div >
-							<select>
-						      <option>1</option>
-						      <option>2</option>
-						      <option>3</option>
-						      <option>4</option>
-						      <option>5</option>
+							<select v-bind:id='paramindex'>
+							  <option v-for="it in rules" v-bind:value="it.ruleId">{{it.ruleName}}</option>
 						    </select>
 						</div>
 					</div>
@@ -92,6 +88,7 @@
 	  el: '#DataMuduleDiv2',
 	  mounted() {
     	  this.getModuleData();
+    	  this.getRuleData();
       },
       components: {
 //     	    'a-component': AComponent,
@@ -99,7 +96,9 @@
       },
 	  data: {
 		  module:{moduleId:'',moduleName:'模板名称',moduleText:'模板内容'},
-		  items: [],
+// 		  rule:{ruleId:'',ruleName:'',ruleSource:'',paramFile:'',className:'',methodName:''},
+		  ruleList:[],
+		  paramItems: [],
 		  index: 1
 	  },
 	  methods:{
@@ -118,12 +117,28 @@
 				  console.log("反馈出现问题！");
 			  });
 		  },
-		  add:function(component, test) {
-		      this.items.push({
+		  getRuleData:function(){
+			  this.$http({
+				  method:'GET',
+				  url:'/GeneratorDataWeb/rule/getAll.do',
+				  emulateJSON:true, //允许body带接送传输
+					headers: {
+						dataType:"json", 
+						contentType:"application/json"
+            		}
+			  }).then(response => {
+				  this.ruleList = response.body;
+				  console.log("Rule"+this.ruleList);
+			  },response => {
+				  console.log("反馈出现问题！");
+			  })
+		  },
+		  add:function(component,param) {
+		      this.paramItems.push({
 		        'component': component,
-		        'texta': test+this.index++,
+		        'pIndex': param+this.index++,
 		      })
-		      console.log(this.items);
+		      console.log(this.paramItems);
 		  }
 	  },
 	  router
