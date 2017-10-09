@@ -31,8 +31,8 @@ public class RuleServiceImpl implements RuleService {
 		}else if(tblRule.getRuleSource()==CommVariable.RULE_SOURCE_CODE){
 			tblRule.setParamFile("");
 		}
-		int result = tblRuleMapper.insert(tblRule);
-		logger.debug("save rule = "+ruleStr+"  result is "+result);
+		int result = tblRuleMapper.insertSelective(tblRule);
+		logger.info("save rule = "+ruleStr+"  result is "+result);
 		return result;
 	}
 

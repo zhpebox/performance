@@ -41,7 +41,7 @@
 		</javaClientGenerator>
 
 		<table tableName="T_module" domainObjectName="TblModule">
-			 <generatedKey column="module_id" sqlStatement="MySql" identity="true"/>
+			<generatedKey column="module_id" sqlStatement="MySql" identity="true"/>
 		</table>
 		<table tableName="T_rule" domainObjectName="TblRule">
 			<generatedKey column="rule_id" sqlStatement="MySql" identity="true"/>

@@ -44,7 +44,7 @@
 							
 							<div class="col-md-6 column"></div>
 							<div class="col-md-6 column" style="text-align:right">
-								<button type="submit"  class="btn btn-default btn-success">Submit</button>
+<!-- 								<button type="submit"  class="btn btn-default btn-success">Submit</button> -->
 								<button type="button" v-on:click="submitModuleData" class="btn btn-default btn-info">add Rule</button>
 							</div>
 						</form>
@@ -88,7 +88,7 @@ var vm = new Vue({
 		  submitModuleData:function(){
 			  this.$http({
 				  method:'POST',
-				  url:'/GeneratorDataWeb/rule/adds.do',
+				  url:'/GeneratorDataWeb/rule/add.do',
 				  body:{'rule':JSON.stringify(this.rule)},
 				  emulateJSON:true,  //允许body带接送传输
 					headers: {
