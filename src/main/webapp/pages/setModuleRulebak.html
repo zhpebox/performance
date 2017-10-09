@@ -1,3 +1,4 @@
+<!-- 动态生成组件，在获取组件model时候出现了问题 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,27 +29,15 @@
 								<textarea class="form-control" rows="8" v-model="module.moduleText" disabled></textarea>
 							</div>
 							<div class="form-group">
-								<button @click="addParam()" class="btn btn-primary">Add Param</button>
+<!-- 							<button v-on:click="add('a-component', 'test')" class="btn btn-primary">Add A</button> -->
+								<button @click="addValue('b-component', 'param')" class="btn btn-primary">Add Params</button>
 							</div>
-							<div>
-								<div v-for="item in paramsList">
-									<div class="form-group">
-										<div class="col-md-3 column">
-											<label>参数-{{item.pIndex}}</label>
-										</div>
-										<div class="col-md-9 column">
-											<div>
-												<select v-model='ruleValue[item.pIndex]'>
-													<option v-for="rule in ruleList" v-bind:value="rule.ruleId">{{rule.ruleName}}</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 column"></div>
-								<div class="col-md-6 column" style="text-align: right">
-									<button type="button" v-on:click="submitModuleRule" class="btn btn-default btn-success">保存</button>
-								</div>
+							<div >
+						</div>
+							<div :is="item.component" :paramindex="item.pIndex" :rules="ruleList" v-for="item in paramItems"></div>
+							<div class="col-md-6 column"></div>
+							<div class="col-md-6 column" style="text-align: right">
+								<button type="button" v-on:click="submitModuleRule" class="btn btn-default btn-success">保存</button>
 							</div>
 						</form>
 					</div>
@@ -59,7 +48,22 @@
 	</div>
 </body>
 <script type="text/javascript">
-	//定义路由，用于调转到当前页面时，获取相应参数
+	var BComponent = Vue.extend({
+	  props: ['paramindex','rules','ruleValue'],
+	  template: `<div class="form-group">
+					<div class="col-md-3 column" >
+	 						<label>{{ paramindex }} {{ruleValue}}</label>
+					</div>
+					<div class="col-md-9 column" >
+						<div >
+							<select v-model='ruleValue' v-bind:id='paramindex'>
+							  <option v-for="it in rules" v-bind:value="it.ruleId">{{it.ruleName}}</option>
+						    </select>
+						</div>
+					</div>
+				</div>`
+	})
+
 	const router = new VueRouter({
 		routes:[{
 			path:'/:muduleId'
@@ -68,18 +72,20 @@
 	
 	new Vue({
 	  el: '#DataMuduleDiv2',
-	  //加载执行函数  mounted
+	  //加载执行
 	  mounted() {
     	  this.getModuleData();
     	  this.getRuleData();
       },
+      components: {
+    	    'b-component': BComponent,
+      },
 	  data: {
-		  module:{moduleId:'',moduleName:'',moduleText:''}, //当前模板的相关内容
-		  ruleList:[],//缓存的参数规则列表
-		  paramsList: [],//参数列表，用于设置参数
-		  ruleValue:[],//记录选择后的规则信息
-		  submitValue:{moduleId:'',ruleValues:''},//封装提交参数
-		  pindex: 0
+		  module:{moduleId:'',moduleName:'模板名称',moduleText:'模板内容'},
+		  ruleList:[],
+		  paramItems: [],
+		  ruleVale:'',
+		  index: 1
 	  },
 	  methods:{
 		  getModuleData:function(){
@@ -108,27 +114,30 @@
             		}
 			  }).then(response => {
 				  this.ruleList = response.body;
+				  console.log("Rule"+this.ruleList);
 			  },response => {
 				  console.log("反馈出现问题！");
 			  })
 		  },
-		  addParam:function() {
-		      this.paramsList.push({
-		    	  'pValue': this.ruleValue[this.pindex],
-		    	  'pIndex': this.pindex++,
-		      });
+		  addValue:function(component,param) {
+		      this.paramItems.push({
+		        'component': component,
+		        'pIndex': param+this.index++,
+		        'ruleVale':'MM'
+		      })
+		      console.log(this.paramItems);
 		  },
 		  submitModuleRule:function(){
-			  this.submitValue.moduleId=this.module.moduleId;
-			  this.submitValue.ruleValues=this.ruleValue;
 			  console.log("submit Data is : "+JSON.stringify(this.module)+" \n"+
 					  JSON.stringify(this.paramItems)+" \n"+
-					  JSON.stringify(this.ruleValue)+" \n"+
-					  JSON.stringify(this.submitValue));
+					  JSON.stringify(this.ruleVale));
+			  var tag = event.target;
+				var index = tag.getAttribute('data-index');
+				alert(this.dataModel[index].value1);
 		  }
 	  },
 	  router
 	})
 // 	.$mount('#DataMuduleDiv')
 </script>
-</html>
+</html>ml>
