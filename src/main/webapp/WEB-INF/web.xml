@@ -90,7 +90,7 @@
 	</filter-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>/pages/dataModule.html</welcome-file>
+		<welcome-file>/pages/main.html</welcome-file>
 	</welcome-file-list>
 
 

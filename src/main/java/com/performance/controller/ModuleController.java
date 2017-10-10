@@ -35,7 +35,15 @@ public class ModuleController {
 	@RequestMapping(value="/get/{moduleId}",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
 	public String getDataModule(@PathVariable(value="moduleId")String moduleId){
-		String result = moduleService.getModule(moduleId);
+		String result = moduleService.getModuleById(moduleId);
+		return result;
+	}
+	
+	@RequestMapping(value="/getAll",method=RequestMethod.GET)
+	@ResponseBody
+	public String getAll(){
+		String result = moduleService.getModuleList("");
+		result = "{\"data\":"+result+"}";
 		return result;
 	}
 	

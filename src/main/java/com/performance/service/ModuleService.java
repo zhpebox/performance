@@ -15,6 +15,8 @@ public interface ModuleService {
 	 * @param moduleId
 	 * @return
 	 */
-	public String getModule(String moduleId);
+	public String getModuleById(String moduleId);
+
+	public String getModuleList(String paramStr);
 	
 }

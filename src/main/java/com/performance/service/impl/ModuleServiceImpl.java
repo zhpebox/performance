@@ -1,5 +1,7 @@
 package com.performance.service.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +34,18 @@ public class ModuleServiceImpl implements ModuleService {
 	}
 
 	@Override
-	public String getModule(String moduleId) {
+	public String getModuleById(String moduleId) {
 		TblModule result = tblModuleMapper.selectByPrimaryKey(Integer.parseInt(moduleId));
 		
 		return JSON.toJSONString(result);
+	}
+
+	@Override
+	public String getModuleList(String paramStr) {
+		List<TblModule> resultList = tblModuleMapper.selectByExample(null);
+		String resultStr = JSON.toJSONString(resultList);
+		resultStr = resultStr.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+		return resultStr;
 	}
 
 }
