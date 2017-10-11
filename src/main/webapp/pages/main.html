@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" /> 
-	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css" /> 
-	<script src="http://cdn.gbtags.com/datatables/1.10.5/js/jquery.js"></script> 
-	<script src="http://cdn.gbtags.com/datatables/1.10.5/js/jquery.dataTables.min.js"></script> 
-	<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script> 
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.v3.0.3.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/dataTables.min.v1.10.16.css" /> 
+	<script type="text/javascript" src="js/jquery.v2.2.4.js"></script> 
+	<script type="text/javascript" src="js/dataTables.min.v1.10.16.js"></script> 
 </head>
 
 <body>
@@ -23,15 +21,15 @@
 		<div class="row-fluid">
 			<div class="col-md-2">
 				<ul class="nav nav-list well">
-					<li class="nav-header">列表标题</li>
-					<li class="active"><a href="#">首页</a></li>
-					<li><a href="#">库</a></li>
-					<li><a href="#">应用</a></li>
-					<li class="nav-header">功能列表</li>
-					<li><a href="#">资料</a></li>
-					<li><a href="#">设置</a></li>
+					<li class="nav-header">模板</li>
+					<li class="active" style="background:#87CEFA;border-radius:5px"><a href="..">模板列表</a></li>
+					<li><a href="pages/addModule.html">新增模板</a></li>
+					<li class="nav-header">规则</li>
+					<li><a href="#">规则列表</a></li>
+					<li><a href="pages/addRule.html">新增规则</a></li>
 					<li class="divider"></li>
-					<li><a href="#">帮助</a></li>
+					<li class="nav-header">造数</li>
+					<li><a href="#">关联规则</a></li>
 				</ul>
 			</div>
 			<div class="col-md-10">
@@ -78,12 +76,11 @@
 								},
 								{
 									"render" : function(data, type, row, meta) {
-										//渲染 把数据源中的标题和url组成超链接
-										return '<a href="' + data + '" target="_blank">'
-												+ row.moduleName + '</a>';
+										//渲染 把数据源中的标题和url组成超链接 target="_blank"
+										return '<a href=pages/linkModuleRule.html#/' + data + ' >关联规则 </a>';
 									},
 									//指定是第2列
-									"targets" : 1
+									"targets" : 3
 								} ]
 
 					});
