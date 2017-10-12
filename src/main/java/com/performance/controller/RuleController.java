@@ -46,4 +46,13 @@ public class RuleController {
 		String resultList = ruleService.getRule("");
 		return resultList;
 	}
+	
+	@RequestMapping(value="/getAllJSon",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String getAllRuleJSon(){
+		logger.debug(" /rule/getAllJSon ");
+		String resultList = ruleService.getRule("");
+		resultList = "{\"data\":"+resultList+"}";
+		return resultList;
+	}
 }

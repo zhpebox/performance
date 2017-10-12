@@ -3,7 +3,7 @@
 	<li class="active"><a href="..">模板列表</a></li>
 	<li id="addModuleLi"><a href="addModule.html">新增模板</a></li>
 	<li class="nav-header">规则</li>
-	<li><a href="#">规则列表</a></li>
+	<li id="listRuleLi"><a href="listRule.html">规则列表</a></li>
 	<li id="addRuleLi"><a href="addRule.html">新增规则</a></li>
 	<li class="divider"></li>
 	<li class="nav-header">造数</li>
@@ -15,9 +15,10 @@ $().ready(function(){
 	var url = window.location.pathname;
 	if(isContain(url,"addModule")){
 		$("#addModuleLi").css({"background":"#87CEFA","border-radius":"5px"});
-	}
-	if(isContain(url,"addRule")){
+	}else if(isContain(url,"addRule")){
 		$("#addRuleLi").css({"background":"#87CEFA","border-radius":"5px"});
+	}else if(isContain(url, "listRule")){
+		$("#listRuleLi").css({"background":"#87CEFA","border-radius":"5px"});
 	}
 });
 
