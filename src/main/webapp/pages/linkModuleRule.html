@@ -102,7 +102,7 @@ new Vue({
 	  ruleList:[],//缓存的参数规则列表
 	  paramsList: [],//参数列表，用于设置参数
 	  ruleValue:[],//记录选择后的规则信息
-	  submitValue:{moduleId:'',ruleValues:''},//封装提交参数
+	  submitValue:{moduleId:'',moduleName:'',ruleValues:''},//封装提交参数
 	  pindex: 0
   },
   methods:{
@@ -157,6 +157,7 @@ new Vue({
 	  },
 	  submitModuleRule:function(){
 		  this.submitValue.moduleId=this.module.moduleId;
+		  this.submitValue.moduleName=this.module.moduleName;
 		  this.submitValue.ruleValues=this.ruleValue;
 		  this.$http({
 				method:'POST',

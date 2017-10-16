@@ -49,6 +49,9 @@
 		<table tableName="T_module_rule" domainObjectName="TblModuleRule">
 			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
 		</table>
+		<table tableName="T_generator" domainObjectName="TblGenerator">
+			<generatedKey column="gid" sqlStatement="MySql" identity="true"/>
+		</table>
 
 	</context>
 </generatorConfiguration>

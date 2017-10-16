@@ -7,7 +7,7 @@
 	<li id="addRuleLi"><a href="addRule.html">新增规则</a></li>
 	<li class="divider"></li>
 	<li class="nav-header">造数</li>
-	<li><a href="#">关联规则</a></li>
+	<li id="listGeneratorLi"><a href="listGenerator.html">关联规则</a></li>
 </ul>
 
 <script>
@@ -19,6 +19,8 @@ $().ready(function(){
 		$("#addRuleLi").css({"background":"#87CEFA","border-radius":"5px"});
 	}else if(isContain(url, "listRule")){
 		$("#listRuleLi").css({"background":"#87CEFA","border-radius":"5px"});
+	}else if(isContain(url, "listGenerator")){
+		$("#listGeneratorLi").css({"background":"#87CEFA","border-radius":"5px"});
 	}
 });
 
