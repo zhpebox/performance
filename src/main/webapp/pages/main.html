@@ -68,7 +68,7 @@
 	}).$mount("#datatable");
 
 	/*Javascript代码片段*/
-	var tblMudule = $('#example').DataTable({
+	var tblModule = $('#example').DataTable({
 						ajax : {
 							//指定数据源
 							url:"/GeneratorDataWeb/module/getAll.do"
@@ -96,7 +96,9 @@
 								{
 									"render" : function(data, type, row, meta) {
 										//渲染 把数据源中的标题和url组成超链接 target="_blank"
-										return '<a href=pages/linkModuleRule.html#/' + data + ' >关联规则 </a>';
+										return '<a href=pages/linkModuleRule.html#/' + data + ' >关联规则 </a>'
+												+'&nbsp;'
+												+'<input mid="'+data+'" type="image" src="images/delete.jpg" style="width:20px;height:20px;" value="删除">';
 									},
 									//指定是第2列
 									"targets" : 4
@@ -114,8 +116,8 @@
 					});
 
 	//前台添加序号
-	tblMudule.on('order.dt search.dt', function() {
-		tblMudule.column(1, {
+	tblModule.on('order.dt search.dt', function() {
+		tblModule.column(1, {
 			"search" : 'applied',
 			"order" : 'applied'
 		}).nodes().each(function(cell, i) {
@@ -123,14 +125,20 @@
 		});
 	}).draw();
 	
-	tblMudule.on("click","input",function(){
+	tblModule.on("click","input[type=checkbox]",function(){
 		console.log($(this).parents("tr").get(0).tagName);
 		console.log($(this).parents("tr")[0].tagName);
 		console.log($(this).parents("tr").toggleClass('x'));
 	});
 	
+	tblModule.on("click","input[type=image]",function(){
+		console.log($(this).attr("mid"));
+		$(this).parents("tr").toggleClass('d');
+		tblModule.row('.d').remove().draw(false);
+	});
+	
 	$("#delButton").click(function(){
-		tblMudule.rows(".x").remove().draw(false);
+		tblModule.rows(".x").remove().draw(false);
 	});
 	
 // 	$('#example tbody').on( 'click', 'tr', function () {
@@ -140,19 +148,19 @@
 //             $(this).removeClass('selected');
 //         }
 //         else {
-//         	tblMudule.$('tr.selected').removeClass('selected');
+//         	tblModule.$('tr.selected').removeClass('selected');
 //             $(this).addClass('selected');
 //         }
 //     } );
  
 //     $('#button').click( function () {
-//     	alert( tblMudule.rows('.selected').data().length +' row(s) selected' );
-//     	tblMudule.row('.selected').remove().draw( false );
+//     	alert( tblModule.rows('.selected').data().length +' row(s) selected' );
+//     	tblModule.row('.selected').remove().draw( false );
 //     } );
 	
 	
 	function submitDel(){
-	tblMudule.rows('.selected').remove().draw( false );
+	tblModule.rows('.selected').remove().draw( false );
 // 		chk_value = [];
 		
 // 		$("input[name='checkList']:checked").each(function(){
