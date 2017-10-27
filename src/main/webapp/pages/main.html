@@ -49,21 +49,34 @@
 					<tbody>
 					</tbody>
 				</table>
-				<input id="delButton" type="button" value="commit" />
+				<input id="delButton" type="button" value="commitDelete" />
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
-	var checkList = new Vue({
+	var vueObj = new Vue({
 		data:{
 			checkSelected:[]
 		},
 		methods:{
-// 			submitDel:function(){
-// 				alert(this.checkSelected);
-// 				console.log(this.checkSelected);
-// 			}
+			submitDel:function(){
+				this.$http({
+					method:'POST',
+					url:'/GeneratorDataWeb/module/delete.do',
+					body:{"moduleList":JSON.stringify(this.checkSelected)},
+					emulateJSON:true,
+					headers: {
+						dataType:"json", 
+						contentType:"application/json"
+	          		}
+				}).then(response=>{
+					console.log(response.text);
+					tblModule.rows(".x").remove().draw(false);
+				},response=>{
+					console.log("请求出现问题！");
+				});
+			}
 		}
 	}).$mount("#datatable");
 
@@ -98,6 +111,7 @@
 										//渲染 把数据源中的标题和url组成超链接 target="_blank"
 										return '<a href=pages/linkModuleRule.html#/' + data + ' >关联规则 </a>'
 												+'&nbsp;'
+// 												+'<input mid="'+data+'" type="button" class="glyphicon glyphicon-lock" >';
 												+'<input mid="'+data+'" type="image" src="images/delete.jpg" style="width:20px;height:20px;" value="删除">';
 									},
 									//指定是第2列
@@ -129,6 +143,12 @@
 		console.log($(this).parents("tr").get(0).tagName);
 		console.log($(this).parents("tr")[0].tagName);
 		console.log($(this).parents("tr").toggleClass('x'));
+		if($(this).is(':checked')){
+			vueObj.checkSelected.push($(this).attr("value"));
+		}else{
+			vueObj.checkSelected.splice($.inArray($(this).attr("value"),vueObj.checkSelected),1);
+		}
+		console.log(vueObj.checkSelected);
 	});
 	
 	tblModule.on("click","input[type=image]",function(){
@@ -138,6 +158,13 @@
 	});
 	
 	$("#delButton").click(function(){
+// 		$("[name=checkList]").each(function(){
+// 			if($(this).is(':checked')){
+// 				vueObj.checkSelected.push($(this).attr("value"));
+// 			}
+// 		});
+		console.log(vueObj.checkSelected);
+		vueObj.submitDel();
 		tblModule.rows(".x").remove().draw(false);
 	});
 	
