@@ -47,4 +47,12 @@ public class ModuleController {
 		return result;
 	}
 	
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteModule(@RequestParam(value="moduleList")String moduleList){
+		logger.info(" /delete moduleList="+moduleList);
+		moduleService.deleteModule(moduleList);
+		return "";
+	}
+	
 }

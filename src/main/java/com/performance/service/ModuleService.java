@@ -18,5 +18,7 @@ public interface ModuleService {
 	public String getModuleById(String moduleId);
 
 	public String getModuleList(String paramStr);
+
+	public int deleteModule(String moduleList);
 	
 }

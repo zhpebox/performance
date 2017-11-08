@@ -19,6 +19,12 @@ public class TestModuleController {
 		System.out.println(result);
 	}
 	
+	@Test
+	public void  testDeleteModule(){
+		String param = "[\"5\",\"7\",\"9\",\"11\",\"19\"]";
+		c.deleteModule(param);
+	}
+	
 //	@Test
 //	public void testGetDataModule(){
 //		ApplicationContext applicationContext = new FileSystemXmlApplicationContext("src/test/resources/conf/spring*.xml"); 

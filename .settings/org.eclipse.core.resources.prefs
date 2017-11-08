@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/resources/conf/redis.properties=UTF-8
 encoding//src/main/webapp/css/dataTables.min.v1.10.16.css=UTF-8
 encoding//src/main/webapp/pages/bak/dataModule.html=UTF-8
 encoding//src/main/webapp/pages/bak/dataRule.html=UTF-8
@@ -11,4 +12,6 @@ encoding//src/main/webapp/pages/success.jsp=UTF-8
 encoding//src/main/webapp/pages/upload1.jsp=UTF-8
 encoding//src/main/webapp/pages/upload2.jsp=UTF-8
 encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding//src/test/resources/conftest/redis.properties=UTF-8
 encoding/<project>=UTF-8

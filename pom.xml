@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring版本号 -->
-		<spring.version>4.3.11.RELEASE</spring.version>
+		<spring.version>4.1.3.RELEASE</spring.version>
 		<!-- mybatis版本号 -->
 		<mybatis.version>3.2.4</mybatis.version>
 		<!-- log4j日志文件管理包版本 -->
@@ -186,6 +186,46 @@
             <version>2.5</version>
         </dependency>
 		
+		<!-- 集成Redis -->
+	    <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-redis</artifactId>
+<!-- 		    <version>2.0.0.RELEASE</version> -->
+		    <version>1.5.2.RELEASE</version>
+		</dependency>
+ 
+	    <!-- Redis客户端 --> 
+	    <dependency> 
+	        <groupId>redis.clients</groupId> 
+	        <artifactId>jedis</artifactId> 
+	        <version>2.4.2</version> 
+	    </dependency>
+	    
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+				
+				
+<!-- 		自制jetty		 -->
+		<dependency>
+	        <groupId>org.eclipse.jetty.aggregate</groupId>
+	        <artifactId>jetty-all</artifactId>
+	        <version>9.2.14.v20151106</version>
+	      </dependency>
+	      <dependency>
+	        <groupId>javax.servlet</groupId>
+	        <artifactId>javax.servlet-api</artifactId>
+	        <version>3.1.0</version>
+	      </dependency>
+	      <dependency>
+	         <groupId>org.eclipse.jetty</groupId>
+	         <artifactId>jetty-jsp</artifactId>
+	         <version>9.2.15.v20160210</version>
+	      </dependency>
+				
 	</dependencies>
 	<build>
 		<finalName>GeneratorDataWeb</finalName>
@@ -200,6 +240,7 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+<!-- 			mybatis代码自动生成 -->
 			<plugin>
 					<groupId>org.mybatis.generator</groupId>
 					<artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -209,6 +250,31 @@
 						<overwrite>true</overwrite>
 					</configuration>
 			</plugin>
+<!-- 			采用Jetty Plugin, 运行jetty:run -->
+			<plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.15.v20140411</version>
+                <configuration>
+                    <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webAppConfig>
+                        <contextPath>/GeneratorDataWeb</contextPath>           
+                    </webAppConfig>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8083</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                    <contextHandlers>
+                        <contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+                            <resourceBase>${project.parent.basedir}/src/main/webapp</resourceBase>
+                            <contextPath>/GeneratorDataWeb</contextPath>
+                        </contextHandler>
+                    </contextHandlers>
+                </configuration>
+            </plugin>
 		</plugins>
 		
 	</build>

@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
 import com.performance.dao.TblModuleMapper;
 import com.performance.model.TblModule;
+import com.performance.model.TblModuleExample;
 import com.performance.service.ModuleService;
 
 @Service
@@ -46,6 +48,20 @@ public class ModuleServiceImpl implements ModuleService {
 		String resultStr = JSON.toJSONString(resultList);
 		resultStr = resultStr.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 		return resultStr;
+	}
+
+	@Override
+	public int deleteModule(String moduleList) {
+//		JSONArray tempArray = JSONArray.parseArray(moduleList, Integer.class);
+		List<Integer> tempArray = JSONArray.parseArray(moduleList, Integer.class);
+		
+		TblModuleExample example = new TblModuleExample();
+		TblModuleExample.Criteria criteria = example.createCriteria();
+		criteria.andModuleIdIn(tempArray);
+		
+		tblModuleMapper.deleteByExample(example);
+		
+		return 0;
 	}
 
 }

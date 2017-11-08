@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.performance.model.TblRule;
 import com.performance.service.RuleService;
 
-@Component
+@Controller
 @RequestMapping("/rule")
 public class RuleController {
 	private static final Logger logger = LoggerFactory.getLogger(RuleController.class);
@@ -34,7 +35,7 @@ public class RuleController {
 	
 	@RequestMapping(value="/get/{ruleId}",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
 	@ResponseBody
-	public String getRule(@PathVariable(value="ruleId",required=false)String ruleId){
+	public String getRule(@PathVariable(value="ruleId")String ruleId){
 		logger.debug(" /rule/get/{ruleId} 参数ruleId="+ruleId);
 		return "HHH";
 	}
