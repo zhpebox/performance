@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.performance</groupId>
 	<artifactId>GeneratorDataWeb</artifactId>
-	<packaging>war</packaging>
+ 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GeneratorDataWeb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -227,13 +227,13 @@
 	      </dependency>
 				
 	</dependencies>
+	
 	<build>
-		<finalName>GeneratorDataWeb</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.5.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -250,6 +250,7 @@
 						<overwrite>true</overwrite>
 					</configuration>
 			</plugin>
+
 <!-- 			采用Jetty Plugin, 运行jetty:run -->
 			<plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -274,9 +275,9 @@
                         </contextHandler>
                     </contextHandlers>
                 </configuration>
-            </plugin>
-		</plugins>
-		
+                </plugin>
+         </plugins>
 	</build>
+
 	
 </project>
